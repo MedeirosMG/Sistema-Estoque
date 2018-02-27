@@ -1,0 +1,98 @@
+﻿<div class="col-md-2"></div>
+<div class="col-md-8" ng-controller="Historico" ng-init="iniciaHistorico()">
+    <div class="row tela-sistema" style="margin-top:20px">
+        <div class="panel-group" id="accordion" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+            <div class="panel panel-default" style="margin-top:1px">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" style="text-decoration:none" href="#">
+                            Historico
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <span class="text-muted">Filtro:</span>
+                                    <input class="form-control" ng-model="filtroEstoque" />
+                                </div>
+                                <div class="col-md-4" style="margin-top:20px">
+                                    <button class="btn btn-default pull-right" onClick="window.print()">Imprimir Historico</button>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top:20px">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr style="background-color:#e1e1e1">
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Tipo</th>
+                                            <th scope="col">Quantidade</th>
+                                            <th scope="col">Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="option in listaPaginada">
+                                            <td>{{option.Material}}</td>
+                                            <td>{{option.Tipo}}</td>
+                                            <td>{{option.Quantidade}}</td>
+                                            <td>{{option.Data}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="row">
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item" ng-click="alterarPagina($event)" ng-class="{'disabled':indiceSelecionado==1}"><a class="page-link" href="#" id="anterior">Anterior</a></li>
+                                        <li ng-repeat="i in qtdLista | range" class="page-item" ng-class="{'active' : (i+1)==indiceSelecionado}" id="{{i+1}}" ng-click="alterarPagina($event)">
+                                            <a class="page-link" href="#" data-ride="carousel" id="{{i+1}}">{{i+1}}</a>
+                                        </li>
+                                        <li class="page-item" ng-click="alterarPagina($event)" ng-class="{'disabled':indiceSelecionado==qtdLista}"><a class="page-link" href="#" id="proximo">Proximo</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row tela-print" style="margin-top:20px">
+        <div class="panel-group" id="accordion" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+            <div class="panel panel-default" style="margin-top:1px">
+                <div class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr style="background-color:#e1e1e1">
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Tipo</th>
+                                            <th scope="col">Quantidade</th>
+                                            <th scope="col">Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="option in listaHistorico">
+                                            <td>{{option.Material}}</td>
+                                            <td>{{option.Tipo}}</td>
+                                            <td>{{option.Quantidade}}</td>
+                                            <td>{{option.Data}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque de Materiais</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-app="MyApp" style="background-color:#e1e1e1" ng-controller="controllerGlobal">
+    <div class="navbar navbar-default navbar-fixed-top" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Sistema de estoque", "Index", "Home",  new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Estoque", "Index", "Home")</li>
+                    <li data-toggle="modal" data-target="#modalCadastroIncluir">
+                        <a href="#" ng-click="novoMaterial()">Cadastrar Material</a>
+                    </li>
+                    <li data-toggle="modal" data-target="#modalCadastroExcluir">
+                        <a href="#" ng-click="excluirMaterial()">Excluir Material</a>
+                    </li>
+                    <li>@Html.ActionLink("Historico", "Index", "Historico")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="margin-top:100px" ng-cloak>
+        @RenderBody()
+        @Html.Partial("~/Views/Shared/ModalCadastro.cshtml")
+        @Html.Partial("~/Views/Shared/ModalExcluirCadastro.cshtml")
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

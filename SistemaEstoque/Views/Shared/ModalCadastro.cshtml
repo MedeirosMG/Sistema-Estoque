@@ -1,0 +1,36 @@
+﻿<div class="modal fade" id="modalCadastroIncluir" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:100px" data-keyboard="disabled" data-backdrop="static" ng-controller="incluirMaterial">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Inserir Material</h3>
+            </div>
+            <div class="modal-body">
+               <div class="col-md-12">
+                   <div class="row">
+                       <div class="col-md-4">
+                           <span class="text-muted">Nome do Material:</span>
+                       </div>
+                       <div class="col-md-8">
+                           <input class="form-control" placeholder="Nome" ng-model="produto.Nome"/>
+                       </div>
+                   </div>
+
+                   <div class="row" style="margin-top:20px">
+                       <div class="col-md-4">
+                           <span class="text-muted">Quantidade em estoque:</span>
+                       </div>
+
+                       <div class="col-md-8">
+                           <input class="form-control" placeholder="quantidade" ng-model="produto.Quantidade"/>
+                       </div>
+                   </div>
+
+               </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-primary" ng-click="insereInformacoes()">Confirmar Material</button>
+            </div>
+        </div>
+    </div>
+</div>

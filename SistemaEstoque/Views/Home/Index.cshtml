@@ -1,0 +1,69 @@
+﻿<div class="col-md-2"></div>
+<div class="col-md-8" ng-controller="InitSistema" ng-init="iniciaSistema()">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <span class="text-muted">Filtro:</span>
+            <input class="form-control" ng-model="filtroEstoque" />
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top:20px">
+        <div class="panel-group" id="accordion" ng-repeat="i in listaPaginada.length | range">
+            <div class="panel panel-default" style="margin-top:1px">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse-estoque-{{i}}">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-estoque-{{i}}">
+                            {{listaPaginada[i].Nome}}
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-estoque-{{i}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-xs-12 col-sm-12" style="margin-top:10px">
+                                <span class="text-muted" ng-bind="'Quantidade disponivel em estoque:'"></span>
+                            </div>
+
+                            <div class="col-md-3 col-xs-12 col-sm-12" style="margin-top:10px">
+                                <input class="disabled form-control" style=":-moz-placeholder {
+                                    font-weight: bold;
+                                }
+                                ::-webkit-input-placeholder {
+                                    font-weight: bold;
+                                }
+                                ::-moz-placeholder {
+                                    font-weight: bold;
+                                }
+                                :-ms-input-placeholder {
+                                    font-weight: bold;
+                                }" disabled placeholder="{{listaPaginada[i].Quantidade}}"/>
+                            </div>
+
+                            <div class="col-md-2 col-sm-5 col-xs-5" style="margin-top:10px">
+                                <button class="btn btn-default" name="incluir" id="{{listaPaginada[i].Id}}" ng-click="alteraEstoque($event)">Incluir Material</button>
+                            </div>
+
+                            <div class="col-md-2 col-sm-5 col-xs-5" style="margin-top:10px">
+                                <button class="btn btn-default" name="retirar" id="{{listaPaginada[i].Id}}" ng-click="alteraEstoque($event)">Retirar Material</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" ng-click="alterarPagina($event)" ng-class="{'disabled':indiceSelecionado==1}"><a class="page-link" href="#" id="anterior">Anterior</a></li>
+                <li ng-repeat="i in qtdLista | range" class="page-item" ng-class="{'active' : (i+1)==indiceSelecionado}" id="{{i+1}}" ng-click="alterarPagina($event)">
+                    <a class="page-link" href="#" data-ride="carousel" id="{{i+1}}">{{i+1}}</a>
+                </li>
+                <li class="page-item" ng-click="alterarPagina($event)" ng-class="{'disabled':indiceSelecionado==qtdLista}"><a class="page-link" href="#" id="proximo">Proximo</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

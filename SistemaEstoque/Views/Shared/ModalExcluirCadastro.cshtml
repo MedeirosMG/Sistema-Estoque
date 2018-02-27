@@ -1,0 +1,37 @@
+﻿<div class="modal fade" id="modalCadastroExcluir" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:100px" data-keyboard="disabled" data-backdrop="static" ng-controller="excluirMateriais">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Excluir Material</h3>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <span class="text-muted">Selecione o material:</span>
+                        </div>
+                        <select class="selectpicker col-md-8 col-sm-12 col-xs-12" data-live-search="true" title="Material" ng-model="materialSelecionado" id="selectExcluir">
+                            <option style="display:none" value=""></option>
+                            <option data-select-watcher data-last="{{$last}}" ng-repeat="option in listaMateriais" value="{{option.Id}}">
+                                {{option.Nome}}
+                            </option>
+                        </select>
+                       
+                    </div>
+
+                    <div class="row" style="margin-top:20px" id="semitem">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <span class="text-muted">Nenhum item na lista</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-primary" ng-click="deletarMaterial()">Excluir Material</button>
+            </div>
+        </div>
+    </div>
+</div>
